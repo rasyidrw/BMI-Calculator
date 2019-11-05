@@ -20,9 +20,9 @@ class CalculateViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         
     }
+    
     @IBAction func heightSliderChanged(_ sender: UISlider) {
         
         let height = String(format: "%.2f", sender.value)
@@ -49,8 +49,12 @@ class CalculateViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToResult" {
+            
             let destinationVC = segue.destination as! ResultViewController
             destinationVC.bmiValue = calculatorBrain.getBMIValue()
+            destinationVC.advice = calculatorBrain.getAdvice()
+            destinationVC.color = calculatorBrain.getColor()
+            
         }
     }
 }
